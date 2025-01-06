@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifikasi Akun</title>
+    <style>
+      /* Styling halaman */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #000000;
+        font-family: Arial, sans-serif;
+      }
+
+      .verification-container {
+        width: 300px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .verification-container h2 {
+        margin-bottom: 20px;
+        color: black;
+      }
+
+      .verification-container p {
+        font-size: 14px;
+        color: black;
+      }
+
+      .verification-container input {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        text-align: center;
+        margin: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .verification-container .code-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .verification-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .verification-container button:hover {
+        background-color: red;
+      }
+
+      .verification-container .resend {
+        margin-top: 10px;
+        font-size: 12px;
+        color: black;
+        cursor: pointer;
+      }
+
+      .verification-container .resend:hover {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="verification-container">
+      <h2>Verifikasi Akun</h2>
+      <p>
+        Masukkan kode verifikasi yang telah dikirimkan ke email atau nomor
+        telepon Anda.
+      </p>
+
+      <!-- Tempat memasukkan kode verifikasi -->
+      <div class="code-container">
+        <input
+          type="text"
+          maxlength="1"
+          id="code1"
+          oninput="moveFocus(event, 'code2')"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          id="code2"
+          oninput="moveFocus(event, 'code3')"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          id="code3"
+          oninput="moveFocus(event, 'code4')"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          id="code4"
+          oninput="moveFocus(event, 'code5')"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          id="code5"
+          oninput="moveFocus(event, 'code6')"
+        />
+        <input
+          type="text"
+          maxlength="1"
+          id="code6"
+          oninput="moveFocus(event, 'code7')"
+        />
+      </div>
+
+      <button onclick="verifyCode()">Verifikasi Kode</button>
+
+      <div class="resend" onclick="resendCode()">Kirim Ulang Kode</div>
+    </div>
+
+    <script>
+      // Fungsi untuk memindahkan fokus ke input berikutnya setelah pengguna mengetik angka
+      function moveFocus(event, nextId) {
+        if (event.target.value.length === 1) {
+          document.getElementById(nextId).focus();
+        }
+      }
+
+      // Fungsi untuk memverifikasi kode
+      function verifyCode() {
+        const code = [
+          document.getElementById("code1").value,
+          document.getElementById("code2").value,
+          document.getElementById("code3").value,
+          document.getElementById("code4").value,
+          document.getElementById("code5").value,
+          document.getElementById("code6").value,
+        ].join("");
+
+        if (code.length === 6) {
+          alert("Kode verifikasi berhasil dikirim!");
+          // Logika verifikasi kode bisa ditambahkan di sini (misalnya validasi dengan backend)
+        } else {
+          alert("Mohon masukkan kode verifikasi yang valid.");
+        }
+      }
+
+      // Fungsi untuk mengirim ulang kode
+      function resendCode() {
+        alert("Kode verifikasi telah dikirim ulang.");
+        // Logika untuk mengirim ulang kode dapat ditambahkan di sini
+      }
+    </script>
+  </body>
+</html>
